@@ -1,0 +1,13 @@
+{"namespace": "ai.nodesense.models",
+ "type": "record",
+ "name": "ProductOrder",
+ "fields": [
+     {"name": "id", "type": "int"},
+     {"name": "name", "type": "string"},
+     {"name": "qty", "type": "int"},
+     {"name": "category", "type": "int"},
+     {"name": "customerId", "type": "int"},
+     {"name": "state", "type": "int"},
+     {"name": "timestamp", "type": "long"}
+ ]
+}
