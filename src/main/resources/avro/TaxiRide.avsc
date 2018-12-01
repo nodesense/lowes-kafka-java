@@ -1,0 +1,38 @@
+{"namespace": "ai.nodesense.models",
+  "type": "record",
+  "name": "TaxiRide",
+  "fields": [
+    {"name": "tripId", "type": "string"},
+    {"name": "taxiId", "type": "string"},
+    {"name": "startTime", "type": "string"},
+    {"name": "endTime", "type": "string"},
+    {"name": "tripSeconds", "type": "string"},
+    {"name": "tripMiles", "type": "string"},
+
+    {"name": "pickupCensusTract", "type": "string"},
+    {"name": "dropoffCensusTract", "type": "string"},
+
+    {"name": "pickupCommunityArea", "type": "string"},
+
+    {"name": "dropoffCommunityArea", "type": "string"},
+
+    {"name": "fare", "type": "string"},
+    {"name": "tips", "type": "string"},
+    {"name": "tolls", "type": "string"},
+
+    {"name": "extras", "type": "string"},
+    {"name": "tripTotal", "type": "string"},
+
+    {"name": "paymentType", "type": "string"},
+    {"name": "company", "type": "string"},
+
+    {"name": "pickupCentroidLatitude", "type": "string"},
+    {"name": "pickupCentroidLongitude", "type": "string"},
+    {"name": "pickupCentroidLocation", "type": "string"},
+
+    {"name": "dropoffCentroidLatitude", "type": "string"},
+    {"name": "dropoffCentroidLongitude", "type": "string"},
+    {"name": "dropoffCentroidLocation", "type": "string"},
+    {"name": "communityAreas", "type": "string"}
+  ]
+}

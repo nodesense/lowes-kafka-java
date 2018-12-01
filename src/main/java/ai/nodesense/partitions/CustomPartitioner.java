@@ -33,6 +33,9 @@ public class CustomPartitioner implements Partitioner {
 
         int partition = 0;
 
+        System.out.println("Partition Thread ID " + Thread.currentThread().getId());
+
+
         List<PartitionInfo> partitions = cluster.partitionsForTopic(topic);
 
         int numPartitions = partitions.size();
@@ -46,7 +49,7 @@ public class CustomPartitioner implements Partitioner {
 
         String userName = (String) key;
 
-        if (userName.equals(("OursSpecificKey"))) {
+        if (userName.equals(("USA"))) {
             return 0;
         }
 

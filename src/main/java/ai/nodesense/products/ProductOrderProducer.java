@@ -69,7 +69,7 @@ public class ProductOrderProducer {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
         long events = 10;
-        String schemaUrl = "http://localhost:8081";
+        String schemaUrl = "http://schema-registry:8081";
 
         Properties props = new Properties();
         // hardcoding the Kafka server URI for this example

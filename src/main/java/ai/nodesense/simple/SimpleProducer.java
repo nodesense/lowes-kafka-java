@@ -6,6 +6,7 @@ import org.apache.kafka.clients.producer.Producer;
 
 //import KafkaProducer packages
 import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.common.header.Headers;
 
 //import ProducerRecord packages
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -20,7 +21,7 @@ public class  SimpleProducer {
         Properties props = new Properties();
 
         //Assign localhost id
-        props.put("bootstrap.servers", "localhost:9092");
+        props.put("bootstrap.servers", "broker:9092");
 
         //Set acknowledgements for producer requests.
         // Ensures that all replicas stored the messages
@@ -59,8 +60,16 @@ public class  SimpleProducer {
         for(int i = 0; i < 10; i++) {
             String key = "User" + r.nextInt(4);
             String value = "Value " + Integer.toString(i);
-            producer.send(new ProducerRecord<String, String>(topicName,
-                    key, value));
+
+            ProducerRecord record = new ProducerRecord<String, String>(topicName,
+                    key, value);
+
+            Headers headers = record.headers();
+            headers.add("ClientIP", "192.168.1.100".getBytes());
+            headers.add("AppName", "App2".getBytes());
+
+            producer.send(record);
+
             System.out.println("Message sent " + key + "," + value);
             Thread.sleep(1000);
         }
@@ -237,9 +246,9 @@ public class  SimpleProducer {
     public static void main(String[] args) throws Exception{
         Thread.currentThread().setContextClassLoader(null);
 
-        String topicName = "test";
+        String topicName = "messages2";
 
-        // sendMessages(topicName);
+        sendMessages(topicName);
         // sendMessagesSync(topicName);
 
         //sendMessagesAsync(topicName);
@@ -248,6 +257,7 @@ public class  SimpleProducer {
 
         // sendMessagesWithTimestamp(topicName);
 
-        sendMessagesCustomPartition(topicName);
+        System.out.println("Main Thread ID " + Thread.currentThread().getId());
+       // sendMessagesCustomPartition(topicName);
     }
 }

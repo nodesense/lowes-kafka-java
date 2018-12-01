@@ -127,8 +127,8 @@ public class SimpleConsumer {
 
     public static void main(String[] args) throws Exception {
         String topic = "test";
-        String group = "simple2";
-        String servers = "localhost:9092";
+        String group = "messages";
+        String servers = "broker:9092";
 
         // simpleConsumer(topic, group, servers, true, false);
 
@@ -137,7 +137,7 @@ public class SimpleConsumer {
        // simpleConsumer(topic, group, servers, false, false);
 
         // manually set the commit by callimg commitSync
-        simpleConsumer(topic, group, servers, false, true);
+       // simpleConsumer(topic, group, servers, false, true);
 
         simpleConsumerFromBeginning(topic, group, servers, false, true);
 

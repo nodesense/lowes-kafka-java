@@ -42,7 +42,6 @@ public class RebalancedSimpleConsumer {
 
         KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(props);
 
-        //consumer.subscribe(Arrays.asList(topic));
 
         List<PartitionInfo> partitions = consumer.partitionsFor(topic);
         System.out.println("Partitions " + partitions);
@@ -88,28 +87,18 @@ public class RebalancedSimpleConsumer {
                 continue;
             }
 
-            for (ConsumerRecord<String, String> record : records)
+            for (ConsumerRecord<String, String> record : records) {
                 System.out.printf("partition =%d, offset = %d,  key = %s, value = %s\n",
-                        record.partition(),  record.offset(), record.key(), record.value());
-
-
+                        record.partition(), record.offset(), record.key(), record.value());
+            }
         }
     }
 
-
-
     public static void main(String[] args) throws Exception {
-        String topic = "test3";
+        String topic = "messages";
         String group = "simple2";
-        String servers = "localhost:9092";
-
+        String servers = "broker:9092";
 
         rebalancedConsumer(topic, group, servers);
-
-
-
-
-
-
     }
 }
